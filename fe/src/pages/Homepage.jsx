@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
+import '../assets/css/home_1.css';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { loadScripts } from '../utils/loadScripts';
-import '/public/assets/css/home_1.css';
 
-function Homepage() {
+const Homepage = () => {
 	useEffect(() => {
 		const scripts = ['/assets/js/carousel-home.min.js'];
 
@@ -464,6 +464,6 @@ function Homepage() {
 			{/* <!-- Back to top button --> */}
 		</>
 	);
-}
+};
 
 export default Homepage;

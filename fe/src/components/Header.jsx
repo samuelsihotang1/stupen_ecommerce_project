@@ -1,6 +1,6 @@
-function Header(isSticky = true) {
+const Header = (isSticky = true) => {
 	return (
-		<>
+		<div>
 			<header className="version_2">
 				<div className="layer"></div>
 				{/* <!-- Mobile menu overlay mask --> */}{' '}
@@ -222,7 +222,7 @@ function Header(isSticky = true) {
 				{/* <!-- /related --> */}{' '}
 			</div>
 			{/* <!-- /search_panel --> */}{' '}
-		</>
+		</div>
 	);
 }
 

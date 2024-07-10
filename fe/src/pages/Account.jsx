@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import '../assets/css/account.css';
 import Header from '../components/Header.jsx';
 import { LoginUser, reset } from '../features/authSlice';
-import '/public/assets/css/account.css';
 
-function Account() {
+const Account = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const dispatch = useDispatch();
@@ -406,6 +406,6 @@ function Account() {
 			{/* Back to top button */}
 		</>
 	);
-}
+};
 
 export default Account;

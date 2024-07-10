@@ -1,9 +1,9 @@
+import '../assets/css/about.css';
+import '../assets/css/contact.css';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import '/public/assets/css/about.css';
-import '/public/assets/css/contact.css';
 
-function About() {
+const About = () => {
 	return (
 		<>
 			<div id="page">
@@ -254,6 +254,6 @@ function About() {
 			{/* <!-- Back to top button --> */}
 		</>
 	);
-}
+};
 
 export default About;

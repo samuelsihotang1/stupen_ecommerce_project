@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
+import '../assets/css/listing.css';
 import Footer from '../components/Footer.jsx';
 import Header from '../components/Header.jsx';
 import { loadScripts } from '../utils/loadScripts.js';
-import '/public/assets/css/listing.css';
 
-function Products() {
+const Products = () => {
 	useEffect(() => {
 		const scripts = [
 			'/assets/js/sticky_sidebar.min.js',
@@ -1173,6 +1173,6 @@ function Products() {
 			{/* <!-- Back to top button --> */}
 		</>
 	);
-}
+};
 
 export default Products;

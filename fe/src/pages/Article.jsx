@@ -1,8 +1,8 @@
+import '../assets/css/blog.css';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import '/public/assets/css/blog.css';
 
-function Article() {
+const Article = () => {
 	return (
 		<>
 			<div id="page">
@@ -382,6 +382,6 @@ function Article() {
 			{/* <!-- Back to top button --> */}
 		</>
 	);
-}
+};
 
 export default Article;
