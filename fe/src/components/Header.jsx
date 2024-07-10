@@ -9,7 +9,7 @@ function Header(isSticky = true) {
 						<div className="row small-gutters">
 							<div className="col-xl-3 col-lg-3 d-lg-flex align-items-center">
 								<div id="logo">
-									<a href="index.html">
+									<a href="/">
 										<img
 											src="/real_assets/img/logo.png"
 											alt=""
@@ -30,7 +30,7 @@ function Header(isSticky = true) {
 								{/* <!-- Mobile menu button --> */}{' '}
 								<div className="main-menu">
 									<div id="header_menu">
-										<a href="index.html">
+										<a href="/">
 											<img
 												src="/assets/img/logo_black.svg"
 												alt=""
@@ -73,7 +73,7 @@ function Header(isSticky = true) {
 								<ul className="top_tools">
 									<li>
 										<div className="dropdown dropdown-cart">
-											<a href="cart.html" className="cart_bt">
+											<a href="/cart" className="cart_bt">
 												<strong>2</strong>
 											</a>
 											<div className="dropdown-menu">
@@ -132,12 +132,12 @@ function Header(isSticky = true) {
 														<span>Rp. 70.000</span>
 													</div>
 													<a
-														href="cart.html"
+														href="/cart"
 														className="btn_1 outline">
 														Keranjang
 													</a>
 													<a
-														href="checkout.html"
+														href="/checkout"
 														className="btn_1">
 														Bayar
 													</a>
@@ -149,7 +149,7 @@ function Header(isSticky = true) {
 									<li>
 										<div className="dropdown dropdown-access">
 											<a
-												href="account.html"
+												href="/account"
 												className="access_link">
 												<span>Account</span>
 											</a>

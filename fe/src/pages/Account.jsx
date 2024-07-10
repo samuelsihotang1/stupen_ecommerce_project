@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header.jsx';
@@ -16,7 +16,7 @@ function Account() {
 
 	useEffect(() => {
 		if (user || isSuccess) {
-			navigate('/dashboard');
+			navigate('/');
 		}
 		dispatch(reset());
 	}, [user, isSuccess, dispatch, navigate]);
@@ -49,32 +49,35 @@ function Account() {
 							<div className="col-xl-6 col-lg-6 col-md-8">
 								<div className="box_account">
 									<h3 className="client">Masuk</h3>
-									<form className="form_container">
+									<form onSubmit={Auth} className="form_container">
+										{isError && <p>{message}</p>}
 										<div className="form-group">
 											<input
 												type="email"
 												className="form-control"
-												name="email"
-												id="email"
-												placeholder="Email*"
+												value={email}
+												onChange={(e) => setEmail(e.target.value)}
+												placeholder="Email"
 											/>
 										</div>
 										<div className="form-group">
 											<input
 												type="password"
 												className="form-control"
-												name="password_in"
-												id="password_in"
-												defaultValue=""
-												placeholder="Password*"
+												value={password}
+												onChange={(e) =>
+													setPassword(e.target.value)
+												}
+												placeholder="Password"
 											/>
 										</div>
 										<div className="text-center">
-											<input
+											<button
 												type="submit"
 												defaultValue="Log In"
-												className="btn_1 full-width"
-											/>
+												className="btn_1 full-width">
+												{isLoading ? 'Loading...' : 'Login'}
+											</button>
 										</div>
 									</form>
 									{/* /form_container */}
@@ -91,7 +94,9 @@ function Account() {
 												type="email"
 												className="form-control"
 												name="email"
-												id="email_2"
+												id="email"
+												value={email}
+												onChange={(e) => setEmail(e.target.value)}
 												placeholder="Email"
 											/>
 										</div>
@@ -99,9 +104,12 @@ function Account() {
 											<input
 												type="password"
 												className="form-control"
-												name="password_in_2"
-												id="password_in_2"
-												defaultValue=""
+												name="password"
+												id="password"
+												value={password}
+												onChange={(e) =>
+													setPassword(e.target.value)
+												}
 												placeholder="Password"
 											/>
 										</div>
@@ -109,8 +117,8 @@ function Account() {
 											<input
 												type="password"
 												className="form-control"
-												name="password_in_2"
-												id="password_in_2"
+												name="password"
+												id="password"
 												defaultValue=""
 												placeholder="Konfirmasi Password"
 											/>
