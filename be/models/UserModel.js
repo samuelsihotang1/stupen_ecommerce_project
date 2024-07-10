@@ -42,8 +42,49 @@ const Users = db.define(
 			type: DataTypes.ENUM,
 			values: ['admin', 'user'],
 			allowNull: false,
+			defaultValue: 'user',
 			validate: {
 				notEmpty: true,
+			},
+		},
+		address: {
+			type: DataTypes.STRING,
+			allowNull: true,
+			validate: {
+				notEmpty: true,
+				len: [3, 100],
+			},
+		},
+		city: {
+			type: DataTypes.STRING,
+			allowNull: true,
+			validate: {
+				notEmpty: true,
+				len: [2, 50],
+			},
+		},
+		postalCode: {
+			type: DataTypes.STRING,
+			allowNull: true,
+			validate: {
+				notEmpty: true,
+				len: [3, 20],
+			},
+		},
+		province: {
+			type: DataTypes.STRING,
+			allowNull: true,
+			validate: {
+				notEmpty: true,
+				len: [2, 50],
+			},
+		},
+		phone: {
+			type: DataTypes.STRING,
+			allowNull: true,
+			validate: {
+				notEmpty: true,
+				len: [10, 15],
 			},
 		},
 	},

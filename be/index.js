@@ -62,6 +62,11 @@ app.use(AuthRoute);
 				email: 'admin@gmail.com',
 				password: hashPassword,
 				role: 'admin',
+				address: 'Admin Address',
+				city: 'Admin City',
+				postalCode: 'Admin Postal Code',
+				province: 'Admin Province',
+				phone: 'Admin Phone',
 			});
 			console.log('Admin user registered successfully');
 		} catch (error) {

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../assets/css/account.css';
@@ -8,6 +9,14 @@ import { LoginUser, reset } from '../features/authSlice';
 const Account = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [passwordConfirmation, setPasswordConfirmation] = useState('');
+	const [name, setName] = useState('');
+	const [address, setAddress] = useState('');
+	const [city, setCity] = useState('');
+	const [postalCode, setPostalCode] = useState('');
+	const [province, setProvince] = useState('');
+	const [phone, setPhone] = useState('');
+	const [msg, setMsg] = useState('');
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { user, isError, isSuccess, isLoading, message } = useSelector(
@@ -24,6 +33,28 @@ const Account = () => {
 	const Auth = (e) => {
 		e.preventDefault();
 		dispatch(LoginUser({ email, password }));
+	};
+
+	const registerUser = async (e) => {
+		e.preventDefault();
+		try {
+			await axios.post('http://localhost:5000/users', {
+				name: name,
+				email: email,
+				password: password,
+				passwordConfirmation: passwordConfirmation,
+				address: address,
+				city: city,
+				postalCode: postalCode,
+				province: province,
+				phone: phone,
+			});
+			navigate('/');
+		} catch (error) {
+			if (error.response) {
+				setMsg(error.response.data.msg);
+			}
+		}
 	};
 
 	return (
@@ -50,8 +81,12 @@ const Account = () => {
 								<div className="box_account">
 									<h3 className="client">Masuk</h3>
 									<form onSubmit={Auth} className="form_container">
-										{isError && <p>{message}</p>}
 										<div className="form-group">
+											{isError && (
+												<p style={{ textAlign: 'center' }}>
+													{message}
+												</p>
+											)}
 											<input
 												type="email"
 												className="form-control"
@@ -88,8 +123,15 @@ const Account = () => {
 							<div className="col-xl-6 col-lg-6 col-md-8">
 								<div className="box_account">
 									<h3 className="new_client">Daftar</h3>{' '}
-									<div className="form_container">
+									<form
+										onSubmit={registerUser}
+										className="form_container">
 										<div className="form-group">
+											{msg && (
+												<p style={{ textAlign: 'center' }}>
+													{msg}
+												</p>
+											)}
 											<input
 												type="email"
 												className="form-control"
@@ -117,9 +159,12 @@ const Account = () => {
 											<input
 												type="password"
 												className="form-control"
-												name="password"
-												id="password"
-												defaultValue=""
+												value={passwordConfirmation}
+												onChange={(e) =>
+													setPasswordConfirmation(
+														e.target.value
+													)
+												}
 												placeholder="Konfirmasi Password"
 											/>
 										</div>
@@ -131,6 +176,10 @@ const Account = () => {
 														<input
 															type="text"
 															className="form-control"
+															value={name}
+															onChange={(e) =>
+																setName(e.target.value)
+															}
 															placeholder="Nama"
 														/>
 													</div>
@@ -140,6 +189,10 @@ const Account = () => {
 														<input
 															type="text"
 															className="form-control"
+															value={address}
+															onChange={(e) =>
+																setAddress(e.target.value)
+															}
 															placeholder="Alamat Lengkap"
 														/>
 													</div>
@@ -152,6 +205,10 @@ const Account = () => {
 														<input
 															type="text"
 															className="form-control"
+															value={city}
+															onChange={(e) =>
+																setCity(e.target.value)
+															}
 															placeholder="Kota"
 														/>
 													</div>
@@ -161,6 +218,12 @@ const Account = () => {
 														<input
 															type="text"
 															className="form-control"
+															value={postalCode}
+															onChange={(e) =>
+																setPostalCode(
+																	e.target.value
+																)
+															}
 															placeholder="Kode Pos"
 														/>
 													</div>
@@ -173,6 +236,12 @@ const Account = () => {
 														<input
 															type="text"
 															className="form-control"
+															value={province}
+															onChange={(e) =>
+																setProvince(
+																	e.target.value
+																)
+															}
 															placeholder="Provinsi"
 														/>
 													</div>
@@ -182,6 +251,10 @@ const Account = () => {
 														<input
 															type="text"
 															className="form-control"
+															value={phone}
+															onChange={(e) =>
+																setPhone(e.target.value)
+															}
 															placeholder="No. Telepon"
 														/>
 													</div>
@@ -197,7 +270,7 @@ const Account = () => {
 												className="btn_1 full-width"
 											/>
 										</div>
-									</div>
+									</form>
 									{/* /form_container */}
 								</div>
 								{/* /box_account */}
