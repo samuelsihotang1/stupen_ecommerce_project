@@ -1,0 +1,18 @@
+.margin_zero {
+	margin: 0 !important;
+}
+
+.no_background_color {
+	background-color: transparent !important;
+}
+
+@media (max-width: 992px) {
+	.view-only-desktop {
+		display: none !important;
+	}
+}
+
+.centered-menu {
+    display: flex;
+    justify-content: center;
+}
