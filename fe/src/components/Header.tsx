@@ -154,8 +154,8 @@ function Header({ isSticky = true }: { isSticky?: boolean }) {
 												<span>Account</span>
 											</a>
 											<div className="dropdown-menu">
-												<a href="account.html" className="btn_1">
-													Sign In
+												<a href="/account" className="btn_1">
+													Masuk atau Daftar
 												</a>
 												<ul>
 													<li>
