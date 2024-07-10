@@ -1,13 +1,9 @@
-interface LoadedScripts {
-	[key: string]: boolean;
-}
+const loadedScripts = {};
 
-export const loadedScripts: LoadedScripts = {};
-
-export function loadScripts(scripts: string[], callback?: () => void): void {
+export function loadScripts(scripts, callback) {
 	const promises = scripts.map((script) => {
 		if (!loadedScripts[script]) {
-			return new Promise<void>((resolve) => {
+			return new Promise((resolve) => {
 				const scriptElement = document.createElement('script');
 				scriptElement.src = script;
 				scriptElement.async = true;

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
-import { loadScripts } from './utils/loadScripts.ts';
+import { Provider } from 'react-redux';
+import App from './App.jsx';
+import { store } from './app/store.js';
+import { loadScripts } from './utils/loadScripts.js';
 
 function Main() {
 	const [isScriptLoaded, setIsScriptLoaded] = useState(false);
@@ -17,8 +19,10 @@ function Main() {
 	return isScriptLoaded ? <App /> : null;
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		<Main />
+		<Provider store={store}>
+			<Main />
+		</Provider>
 	</React.StrictMode>
 );

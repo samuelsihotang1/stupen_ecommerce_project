@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import { loadScripts } from '../utils/loadScripts.ts';
+import Footer from '../components/Footer.jsx';
+import Header from '../components/Header.jsx';
+import { loadScripts } from '../utils/loadScripts.js';
 import '/public/assets/css/listing.css';
 
 function Products() {
@@ -16,7 +16,7 @@ function Products() {
 	return (
 		<>
 			<div id="page">
-            <Header isSticky={false} />
+				<Header isSticky={false} />
 
 				<main>
 					<div className="top_banner version_2">

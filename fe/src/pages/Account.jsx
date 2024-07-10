@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header.tsx';
+import Header from '../components/Header.jsx';
 import { LoginUser, reset } from '../features/authSlice';
 import '/public/assets/css/account.css';
 
@@ -16,12 +16,12 @@ function Account() {
 
 	useEffect(() => {
 		if (user || isSuccess) {
-			navigate('/');
+			navigate('/dashboard');
 		}
 		dispatch(reset());
 	}, [user, isSuccess, dispatch, navigate]);
 
-	const Auth = (e: React.MouseEvent<HTMLButtonElement>) => {
+	const Auth = (e) => {
 		e.preventDefault();
 		dispatch(LoginUser({ email, password }));
 	};
@@ -49,7 +49,7 @@ function Account() {
 							<div className="col-xl-6 col-lg-6 col-md-8">
 								<div className="box_account">
 									<h3 className="client">Masuk</h3>
-									<div className="form_container">
+									<form className="form_container">
 										<div className="form-group">
 											<input
 												type="email"
@@ -76,7 +76,7 @@ function Account() {
 												className="btn_1 full-width"
 											/>
 										</div>
-									</div>
+									</form>
 									{/* /form_container */}
 								</div>
 								{/* /box_account */}

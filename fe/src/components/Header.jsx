@@ -1,4 +1,4 @@
-function Header({ isSticky = true }: { isSticky?: boolean }) {
+function Header(isSticky = true) {
 	return (
 		<>
 			<header className="version_2">
