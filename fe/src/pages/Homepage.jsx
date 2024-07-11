@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import '../assets/css/home_1.css';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -10,6 +11,15 @@ const Homepage = () => {
 
 		loadScripts(scripts);
 	}, []);
+
+	const { user } = useSelector((state) => state.auth);
+
+	// {
+	// 	/* tampilkan nama pengguna jika telah login */
+	// }
+	// {
+	// 	user ? ' | login | ' + user?.name : ' | ga login | ' + user?.name
+	// }
 
 	return (
 		<>
@@ -42,18 +52,25 @@ const Homepage = () => {
 														yang lebih hijau."
 													</p>
 													<div className="owl-slide-animated owl-slide-cta">
+														{user ? (
+															''
+														) : (
+															<a
+																className="btn_1"
+																href="/account"
+																role="button"
+																style={{
+																	marginRight: '1vw',
+																}}>
+																Daftar
+															</a>
+														)}
+
 														<a
-															className="btn_1"
-															href="listing-grid-1-full.html"
-															role="button"
-															style={{
-																marginRight: '1vw',
-															}}>
-															Daftar
-														</a>
-														<a
-															className="btn_1 gray"
-															href="listing-grid-1-full.html"
+															className={`btn_1 ${
+																user ? '' : 'gray'
+															}`}
+															href="/products"
 															role="button">
 															Belanja
 														</a>

@@ -26,6 +26,7 @@ const Account = () => {
 		e.preventDefault();
 		dispatch(LoginUser({ email, password }));
 		navigate('/');
+		window.location.reload();
 	};
 
 	const registerUser = async (e) => {
@@ -44,6 +45,7 @@ const Account = () => {
 			});
 			dispatch(LoginUser({ email, password }));
 			navigate('/');
+			window.location.reload();
 		} catch (error) {
 			if (error.response) {
 				setMsg(error.response.data.msg);

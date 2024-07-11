@@ -1,9 +1,20 @@
 import { React } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import '../assets/css/account.css';
+import { LogOut, reset } from '../features/authSlice';
 
 const Header = (isSticky = true) => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const { user } = useSelector((state) => state.auth);
+
+	const logout = () => {
+		dispatch(LogOut());
+		dispatch(reset());
+		navigate('/');
+		window.location.reload();
+	};
 
 	return (
 		<div>
@@ -184,6 +195,14 @@ const Header = (isSticky = true) => {
 															<a href="help.html">
 																<i className="ti-help-alt"></i>
 																Bantuan
+															</a>
+														</li>
+														<li>
+															<a
+																href="javascript:void(0);"
+																onClick={logout}>
+																<i className="ti-alert"></i>
+																Logout
 															</a>
 														</li>
 													</ul>
