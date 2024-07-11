@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../assets/css/account.css';
 import { LogOut, reset } from '../features/authSlice';
 
-const Header = ({ isSticky = true }) => {
+const Header = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { user } = useSelector((state) => state.auth);
@@ -21,7 +21,7 @@ const Header = ({ isSticky = true }) => {
 			<header className="version_2">
 				<div className="layer"></div>
 				{/* <!-- Mobile menu overlay mask --> */}{' '}
-				<div className={`main_header ${isSticky ? 'Sticky' : ''}`}>
+				<div className="main_header Sticky">
 					<div className="container">
 						<div className="row small-gutters">
 							<div className="col-xl-3 col-lg-3 d-lg-flex align-items-center">

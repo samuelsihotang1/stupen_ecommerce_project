@@ -16,8 +16,7 @@ const Products = () => {
 	return (
 		<>
 			<div id="page">
-				<Header isSticky={false} />
-
+				<Header />
 				<main>
 					<div className="top_banner version_2">
 						<div
@@ -34,7 +33,7 @@ const Products = () => {
 					{/* <!-- /top_banner --> */}
 
 					<div id="stick_here"></div>
-					<div className="toolbox elemento_stick">
+					<div className="toolbox">
 						<div className="container">
 							<ul className="clearfix">
 								<li>
@@ -55,119 +54,7 @@ const Products = () => {
 										</select>
 									</div>
 								</li>
-								<li>
-									<a
-										data-bs-toggle="collapse"
-										href="#filters"
-										role="button"
-										aria-expanded="false"
-										aria-controls="filters">
-										<i className="ti-filter"></i>
-										<span>Filter</span>
-									</a>
-								</li>
 							</ul>
-							<div className="collapse" id="filters">
-								<div className="row small-gutters filters_listing_1">
-									<div className="col-lg-6 col-md-6 col-sm-6">
-										<div className="dropdown">
-											<a
-												href="#"
-												data-bs-toggle="dropdown"
-												className="drop">
-												Kategori
-											</a>
-											<div className="dropdown-menu">
-												<div className="filter_type">
-													<ul>
-														<li>
-															<label className="container_check">
-																Pria <small>12</small>
-																<input type="checkbox" />
-																<span className="checkmark"></span>
-															</label>
-														</li>
-														<li>
-															<label className="container_check">
-																Wanita <small>24</small>
-																<input type="checkbox" />
-																<span className="checkmark"></span>
-															</label>
-														</li>
-														<li>
-															<label className="container_check">
-																Olahraga <small>23</small>
-																<input type="checkbox" />
-																<span className="checkmark"></span>
-															</label>
-														</li>
-														<li>
-															<label className="container_check">
-																Peralatan{' '}
-																<small>11</small>
-																<input type="checkbox" />
-																<span className="checkmark"></span>
-															</label>
-														</li>
-													</ul>
-													<a href="#0" className="apply_filter">
-														Terapkan
-													</a>
-												</div>
-											</div>
-										</div>
-										{/* <!-- /dropdown --> */}
-									</div>
-									<div className="col-lg-6 col-md-6 col-sm-6">
-										<div className="dropdown">
-											<a
-												href="#"
-												data-bs-toggle="dropdown"
-												className="drop">
-												Warna
-											</a>
-											<div className="dropdown-menu">
-												<div className="filter_type">
-													<ul>
-														<li>
-															<label className="container_check">
-																Biru <small>06</small>
-																<input type="checkbox" />
-																<span className="checkmark"></span>
-															</label>
-														</li>
-														<li>
-															<label className="container_check">
-																Merah <small>12</small>
-																<input type="checkbox" />
-																<span className="checkmark"></span>
-															</label>
-														</li>
-														<li>
-															<label className="container_check">
-																Jingga <small>17</small>
-																<input type="checkbox" />
-																<span className="checkmark"></span>
-															</label>
-														</li>
-														<li>
-															<label className="container_check">
-																Hitam <small>43</small>
-																<input type="checkbox" />
-																<span className="checkmark"></span>
-															</label>
-														</li>
-													</ul>
-													<a href="#0" className="apply_filter">
-														Terapkan
-													</a>
-												</div>
-											</div>
-										</div>
-										{/* <!-- /dropdown --> */}
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 					{/* <!-- /toolbox --> */}
