@@ -67,7 +67,7 @@ const Header = () => {
 										</li>
 										<li>
 											<a
-												href="/article"
+												href="/articles"
 												className="show-submenu-mega">
 												Artikel
 											</a>

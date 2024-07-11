@@ -2,7 +2,7 @@ import '../assets/css/blog.css';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-const Article = () => {
+const Articles = () => {
 	return (
 		<>
 			<div id="page">
@@ -384,4 +384,4 @@ const Article = () => {
 	);
 };
 
-export default Article;
+export default Articles;

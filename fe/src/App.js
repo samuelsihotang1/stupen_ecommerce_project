@@ -4,10 +4,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { getMe } from './features/authSlice';
 import About from './pages/About';
 import Account from './pages/Account';
-import Article from './pages/Article';
+import Articles from './pages/Articles';
 import Homepage from './pages/Homepage';
 import Products from './pages/Products';
 import { loadScripts } from './utils/loadScripts';
+import ArticleView from './pages/ArticleView';
 
 function App() {
 	useEffect(() => {
@@ -26,7 +27,8 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Homepage />} />
-					<Route path="/article" element={<Article />} />
+					<Route path="/articles" element={<Articles />} />
+					<Route path="/article/:slug" element={<ArticleView />} />
 					<Route path="/products" element={<Products />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/account" element={<Account />} />
