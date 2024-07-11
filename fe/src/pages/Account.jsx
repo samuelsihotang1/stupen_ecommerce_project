@@ -49,6 +49,7 @@ const Account = () => {
 				province: province,
 				phone: phone,
 			});
+			dispatch(LoginUser({ email, password }));
 			navigate('/');
 		} catch (error) {
 			if (error.response) {
