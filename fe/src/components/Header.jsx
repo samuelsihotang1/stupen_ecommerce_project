@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../assets/css/account.css';
 import { LogOut, reset } from '../features/authSlice';
 
-const Header = (isSticky = true) => {
+const Header = ({ isSticky = true }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { user } = useSelector((state) => state.auth);
