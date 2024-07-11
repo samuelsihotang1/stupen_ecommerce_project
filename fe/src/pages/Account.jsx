@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../assets/css/account.css';
 import Header from '../components/Header.jsx';
-import { LoginUser, reset } from '../features/authSlice';
+import { LoginUser } from '../features/authSlice';
 
 const Account = () => {
 	const [email, setEmail] = useState('');
@@ -22,17 +22,10 @@ const Account = () => {
 	const { user, isError, isSuccess, isLoading, message } = useSelector(
 		(state) => state.auth
 	);
-
-	useEffect(() => {
-		if (user || isSuccess) {
-			navigate('/');
-		}
-		dispatch(reset());
-	}, [user, isSuccess, dispatch, navigate]);
-
 	const Auth = (e) => {
 		e.preventDefault();
 		dispatch(LoginUser({ email, password }));
+		navigate('/');
 	};
 
 	const registerUser = async (e) => {

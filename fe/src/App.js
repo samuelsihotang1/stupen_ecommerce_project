@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { getMe } from './features/authSlice';
 import About from './pages/About';
 import Account from './pages/Account';
 import Article from './pages/Article';
@@ -13,6 +15,11 @@ function App() {
 
 		loadScripts(scripts);
 	}, []);
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getMe());
+	}, [dispatch]);
 
 	return (
 		<div>

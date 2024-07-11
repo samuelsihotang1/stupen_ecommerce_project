@@ -1,4 +1,10 @@
+import { React } from 'react';
+import { useSelector } from 'react-redux';
+import '../assets/css/account.css';
+
 const Header = (isSticky = true) => {
+	const { user } = useSelector((state) => state.auth);
+
 	return (
 		<div>
 			<header className="version_2">
@@ -73,9 +79,13 @@ const Header = (isSticky = true) => {
 								<ul className="top_tools">
 									<li>
 										<div className="dropdown dropdown-cart">
-											<a href="/cart" className="cart_bt">
-												<strong>2</strong>
-											</a>
+											{user ? (
+												<a href="/cart" className="cart_bt">
+													<strong>2</strong>
+												</a>
+											) : (
+												''
+											)}
 											<div className="dropdown-menu">
 												<ul>
 													<li>
@@ -136,9 +146,7 @@ const Header = (isSticky = true) => {
 														className="btn_1 outline">
 														Keranjang
 													</a>
-													<a
-														href="/checkout"
-														className="btn_1">
+													<a href="/checkout" className="btn_1">
 														Bayar
 													</a>
 												</div>
@@ -148,41 +156,42 @@ const Header = (isSticky = true) => {
 									</li>
 									<li>
 										<div className="dropdown dropdown-access">
-											<a
-												href="/account"
-												className="access_link">
+											<a href="/account" className="access_link">
 												<span>Account</span>
 											</a>
 											<div className="dropdown-menu">
-												<a href="/account" className="btn_1">
-													Masuk atau Daftar
-												</a>
-												<ul>
-													<li>
-														<a href="track-order.html">
-															<i className="ti-truck"></i>
-															Lacak Pesanan
-														</a>
-													</li>
-													<li>
-														<a href="account.html">
-															<i className="ti-package"></i>
-															Pesanan Anda
-														</a>
-													</li>
-													<li>
-														<a href="account.html">
-															<i className="ti-user"></i>My
-															Profil
-														</a>
-													</li>
-													<li>
-														<a href="help.html">
-															<i className="ti-help-alt"></i>
-															Bantuan
-														</a>
-													</li>
-												</ul>
+												{user ? (
+													<ul>
+														<li>
+															<a href="track-order.html">
+																<i className="ti-truck"></i>
+																Lacak Pesanan
+															</a>
+														</li>
+														<li>
+															<a href="account.html">
+																<i className="ti-package"></i>
+																Pesanan Anda
+															</a>
+														</li>
+														<li>
+															<a href="account.html">
+																<i className="ti-user"></i>
+																My Profil
+															</a>
+														</li>
+														<li>
+															<a href="help.html">
+																<i className="ti-help-alt"></i>
+																Bantuan
+															</a>
+														</li>
+													</ul>
+												) : (
+													<a href="/account" className="btn_1">
+														Masuk atau Daftar
+													</a>
+												)}
 											</div>
 										</div>
 										{/* <!-- /dropdown-access--> */}{' '}
@@ -224,6 +233,6 @@ const Header = (isSticky = true) => {
 			{/* <!-- /search_panel --> */}{' '}
 		</div>
 	);
-}
+};
 
 export default Header;
