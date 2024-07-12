@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../assets/css/blog.css';
 import Footer from '../components/Footer.jsx';
@@ -11,18 +11,13 @@ import { truncateText } from '../utils/truncateText';
 const ArticleView = () => {
 	const [articles, setArticles] = useState([]);
 	const { slug } = useParams();
-	const [LatestArticles, setLatestArticles] = useState([]);
-
-	useEffect(() => {
-		getArticles();
-		searchArticles();
-	}, []);
+	const [latestArticles, setLatestArticles] = useState([]);
 
 	const handleSearchChange = (event) => {
 		searchArticles(event.target.value);
 	};
 
-	const searchArticles = async (search) => {
+	const searchArticles = useCallback(async (search) => {
 		try {
 			let response;
 			if (search === '' || search === undefined || search === null) {
@@ -36,16 +31,22 @@ const ArticleView = () => {
 		} catch (error) {
 			console.error('Error searching articles:', error);
 		}
-	};
+	}, []);
 
-	const getArticles = async () => {
+	const getArticles = useCallback(async () => {
 		try {
 			const response = await axios.get('http://localhost:5000/article/' + slug);
 			setArticles(response.data);
 		} catch (error) {
 			console.error('Error fetching articles:', error);
 		}
-	};
+	}, [slug]);
+
+	useEffect(() => {
+		getArticles();
+		searchArticles();
+	}, [getArticles, searchArticles]);
+
 	return (
 		<>
 			<div id="page">
@@ -118,7 +119,7 @@ const ArticleView = () => {
 										<h4>Artikel Terbaru</h4>
 									</div>
 									<ul className="comments-list">
-										{LatestArticles.map((article, index) => (
+										{latestArticles.map((article, index) => (
 											<li key={article.slug}>
 												<div className="alignleft">
 													<a href={'/article/' + article.slug}>
