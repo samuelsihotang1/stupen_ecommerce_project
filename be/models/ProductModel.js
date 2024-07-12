@@ -22,7 +22,15 @@ const Products = db.define(
 				len: [3, 100],
 			},
 		},
-		description: {
+		slug: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			unique: true,
+			validate: {
+				notEmpty: true,
+			},
+		},
+		text: {
 			type: DataTypes.TEXT,
 			allowNull: false,
 			validate: {

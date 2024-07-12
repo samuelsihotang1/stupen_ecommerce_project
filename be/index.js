@@ -10,7 +10,9 @@ import ImageProductRoute from './routes/ImageProductRoute.js';
 import ProductRoute from './routes/ProductRoute.js';
 import UserRoute from './routes/UserRoute.js';
 import SeederArticle from './seeder/SeederArticle.js';
+import SeederProduct from './seeder/SeederProduct.js';
 import SeederUser from './seeder/SeederUser.js';
+import SeederImageProduct from './seeder/SeederImageProduct.js';
 
 dotenv.config();
 
@@ -28,6 +30,8 @@ const store = new sessionStore({
 
 	SeederArticle();
 	SeederUser();
+	SeederProduct();
+    SeederImageProduct();
 })();
 
 app.use(

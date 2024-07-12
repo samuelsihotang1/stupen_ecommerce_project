@@ -11,6 +11,7 @@ export const getArticles = async (req, res) => {
 		res.status(500).json({ msg: error.message });
 	}
 };
+
 export const getArticlesByTotal = async (req, res) => {
 	try {
 		const total = parseInt(req.params.total);
