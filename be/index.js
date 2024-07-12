@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import session from 'express-session';
 import db from './config/Database.js';
+import ArticleRoute from './routes/ArticleRoute.js';
 import AuthRoute from './routes/AuthRoute.js';
 import ProductRoute from './routes/ProductRoute.js';
 import UserRoute from './routes/UserRoute.js';
@@ -50,10 +51,11 @@ app.use(express.json());
 app.use(UserRoute);
 app.use(ProductRoute);
 app.use(AuthRoute);
+app.use(ArticleRoute);
 
 // Aktifkan untuk mengisi ke database
 // store.sync();
 
 app.listen(process.env.APP_PORT, () => {
-	console.log('Server up and running...');
+	console.log('Server up and running on 127.0.0.1:' + process.env.APP_PORT);
 });

@@ -2,7 +2,7 @@ import Articles from '../models/ArticleModel.js';
 
 const SeederArticle = async () => {
 	try {
-		await Articles.bulkCreate([
+		const articlesData = [
 			{
 				title: 'Panduan Memasak Nasi Goreng Sempurna',
 				text: 'Nasi goreng adalah salah satu makanan favorit di Indonesia. Dalam artikel ini, kami akan membahas cara memasak nasi goreng yang sempurna, mulai dari bahan-bahan hingga teknik memasak yang tepat. Gunakan bumbu-bumbu tradisional untuk mendapatkan cita rasa yang autentik.\n\nPastikan untuk menggunakan nasi yang sudah dingin agar hasilnya lebih enak. Tambahkan berbagai topping seperti telur, ayam, atau udang sesuai selera Anda. Selamat mencoba!',
@@ -63,8 +63,21 @@ const SeederArticle = async () => {
 				image: 'memilih-laptop.jpg',
 				slug: 'panduan-memilih-laptop-untuk-mahasiswa',
 			},
-		]);
-		console.log('Articles seeded successfully!');
+		];
+
+		for (const article of articlesData) {
+			const existingArticle = await Articles.findOne({
+				where: { slug: article.slug },
+			});
+			if (existingArticle) {
+				console.log(
+					`Article with slug "${article.slug}" already exists. Skipping seeding.`
+				);
+			} else {
+				await Articles.create(article);
+				console.log(`Article "${article.title}" seeded successfully!`);
+			}
+		}
 	} catch (error) {
 		console.error('Failed to seed articles:', error);
 	}

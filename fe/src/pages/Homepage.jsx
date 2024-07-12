@@ -1,25 +1,31 @@
-import { useEffect } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import '../assets/css/home_1.css';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { loadScripts } from '../utils/loadScripts';
+import { truncateText } from '../utils/truncateText';
+import { formatDate } from '../utils/formatDate';
 
 const Homepage = () => {
+	const { user } = useSelector((state) => state.auth);
+	const [articles, setArticles] = useState([]);
+
 	useEffect(() => {
 		const scripts = ['/assets/js/carousel-home.min.js'];
 
 		loadScripts(scripts);
 	}, []);
 
-	const { user } = useSelector((state) => state.auth);
+	useEffect(() => {
+		getArticles();
+	}, []);
 
-	// {
-	// 	/* tampilkan nama pengguna jika telah login */
-	// }
-	// {
-	// 	user ? ' | login | ' + user?.name : ' | ga login | ' + user?.name
-	// }
+	const getArticles = async () => {
+		const response = await axios.get('http://localhost:5000/articles/4');
+		setArticles(response.data);
+	};
 
 	return (
 		<>
@@ -356,117 +362,31 @@ const Homepage = () => {
 							<span>TERBARU</span>
 						</div>
 						<div className="row">
-							<div className="col-lg-6">
-								<a className="box_news" href="blog.html">
-									<figure>
-										<img
-											src="/assets/img/blog-thumb-placeholder.jpg"
-											data-src="/real_assets/img/news/bank-sampah.png"
-											alt=""
-											width="400"
-											height="266"
-											className="lazy"
-										/>
-										<figcaption>
-											<strong>12</strong>Mei
-										</figcaption>
-									</figure>
-									<ul>
-										<li>Minggu, 12 Mei 2024</li>
-									</ul>
-									<h4>Solusi untuk membantu melestarikan lingkungan</h4>
-									<p>
-										Bank sampah adalah inisiatif lingkungan yang
-										mengumpulkan, mengelola, dan mendaur ulang sampah
-										dari masyarakat....
-									</p>
-								</a>
-							</div>
-							{/* <!-- /box_news --> */}
-							<div className="col-lg-6">
-								<a className="box_news" href="blog.html">
-									<figure>
-										<img
-											src="/assets/img/blog-thumb-placeholder.jpg"
-											data-src="/real_assets/img/news/persoalan-persampahan.png"
-											alt=""
-											width="400"
-											height="266"
-											className="lazy"
-										/>
-										<figcaption>
-											<strong>12</strong>Mei
-										</figcaption>
-									</figure>
-									<ul>
-										<li>Minggu, 12 Mei 2024</li>
-									</ul>
-									<h4>Mengatasi Persoalan Persampahan</h4>
-									<p>
-										Mengatasi persoalan persampahan merupakan upaya
-										yang dilakukan untuk mengelola sampah agar tidak
-										menjadi masalah....
-									</p>
-								</a>
-							</div>
-							{/* <!-- /box_news --> */}
-							<div className="col-lg-6">
-								<a className="box_news" href="blog.html">
-									<figure>
-										<img
-											src="/assets/img/blog-thumb-placeholder.jpg"
-											data-src="/real_assets/img/news/ibu-ibu.png"
-											alt=""
-											width="400"
-											height="266"
-											className="lazy"
-										/>
-										<figcaption>
-											<strong>12</strong>Mei
-										</figcaption>
-									</figure>
-									<ul>
-										<li>Minggu, 12 Mei 2024</li>
-									</ul>
-									<h4>Ibu-Ibu Rumah Tangga di Sulawesi Tangga</h4>
-									<p>
-										Ibu-ibu rumah tangga di Sulawesi memiliki peran
-										yang sangat penting dalam kehidupan keluarga dan
-										komunitas mereka....
-									</p>
-								</a>
-							</div>
-							{/* <!-- /box_news --> */}
-							<div className="col-lg-6">
-								<a className="box_news" href="blog.html">
-									<figure>
-										<img
-											src="/assets/img/blog-thumb-placeholder.jpg"
-											data-src="/real_assets/img/news/ibu-rumah-tangga.webp"
-											alt=""
-											width="400"
-											height="266"
-											className="lazy"
-										/>
-										<figcaption>
-											<strong>12</strong>Mei
-										</figcaption>
-									</figure>
-									<ul>
-										<li>Minggu, 12 Mei 2024</li>
-									</ul>
-									<h4>
-										Peran Ganda Ibu Rumah Tangga di Sulawesi dalam
-										Kehidupan Modern
-									</h4>
-									<p>
-										Ibu rumah tangga di Sulawesi menghadapi tantangan
-										unik dalam kehidupan modern sambil mempertahankan
-										tradisi dan budaya lokal....
-									</p>
-								</a>
-							</div>
-							{/* <!-- /box_news --> */}
+							{articles.map((article, index) => (
+								<div key={article.slug} className="col-lg-6">
+									<a
+										className="box_news"
+										href={'/article/' + article.slug}>
+										<figure>
+											<img
+												src="/real_assets/img/news/bank-sampah.png"
+												// href={'/real_assets/img/' + article.image}
+												alt={article.title}
+												width="400"
+												height="266"
+												className="lazy"
+											/>
+										</figure>
+										<ul>
+											<li>
+                                                {formatDate(article.createdAt)}
+											</li>
+										</ul>
+										<h4>{article.title}</h4>
+										<p>{truncateText(150, article.text)}</p>
+									</a>
+								</div>
+							))}
 						</div>
 						{/* <!-- /row --> */}
 					</div>
