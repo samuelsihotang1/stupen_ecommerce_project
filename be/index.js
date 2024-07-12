@@ -6,6 +6,7 @@ import session from 'express-session';
 import db from './config/Database.js';
 import ArticleRoute from './routes/ArticleRoute.js';
 import AuthRoute from './routes/AuthRoute.js';
+import ImageProductRoute from './routes/ImageProductRoute.js';
 import ProductRoute from './routes/ProductRoute.js';
 import UserRoute from './routes/UserRoute.js';
 import SeederArticle from './seeder/SeederArticle.js';
@@ -52,6 +53,7 @@ app.use(UserRoute);
 app.use(ProductRoute);
 app.use(AuthRoute);
 app.use(ArticleRoute);
+app.use(ImageProductRoute);
 
 // Aktifkan untuk mengisi ke database
 // store.sync();
