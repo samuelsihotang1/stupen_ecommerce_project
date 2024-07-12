@@ -11,7 +11,6 @@ import { truncateText } from '../utils/truncateText';
 const ArticleView = () => {
 	const [articles, setArticles] = useState([]);
 	const { slug } = useParams();
-	const [search, setSearch] = useState('');
 	const [LatestArticles, setLatestArticles] = useState([]);
 
 	useEffect(() => {
@@ -20,14 +19,13 @@ const ArticleView = () => {
 	}, []);
 
 	const handleSearchChange = (event) => {
-		setSearch(event.target.value);
-		searchArticles();
+		searchArticles(event.target.value);
 	};
 
-	const searchArticles = async () => {
+	const searchArticles = async (search) => {
 		try {
 			let response;
-			if (search === '') {
+			if (search === '' || search === undefined || search === null) {
 				response = await axios.get('http://localhost:5000/articles/5');
 			} else {
 				response = await axios.get(
@@ -105,10 +103,9 @@ const ArticleView = () => {
 									<div className="form-group">
 										<input
 											type="text"
-											value={search}
 											onChange={handleSearchChange}
 											className="form-control"
-											placeholder="Search.."
+											placeholder="Cari.."
 										/>
 										<button type="submit">
 											<i className="ti-search" />
@@ -118,7 +115,7 @@ const ArticleView = () => {
 								{/* /widget */}
 								<div className="widget">
 									<div className="widget-title">
-										<h4>Latest Post</h4>
+										<h4>Artikel Terbaru</h4>
 									</div>
 									<ul className="comments-list">
 										{LatestArticles.map((article, index) => (

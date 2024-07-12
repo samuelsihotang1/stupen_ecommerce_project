@@ -1,8 +1,44 @@
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import '../assets/css/blog.css';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import { formatDate } from '../utils/formatDate';
+import { truncateText } from '../utils/truncateText';
 
 const Articles = () => {
+	const [articles, setArticles] = useState([]);
+	const [LatestArticles, setLatestArticles] = useState([]);
+
+	useEffect(() => {
+		getArticles();
+		searchArticles();
+	}, []);
+
+	const handleSearchChange = (event) => {
+		searchArticles(event.target.value);
+	};
+
+	const searchArticles = async (search) => {
+		try {
+			let response;
+			if (search === '' || search === undefined || search === null) {
+				response = await axios.get('http://localhost:5000/articles/5');
+			} else {
+				response = await axios.get(
+					'http://localhost:5000/article/latest/' + search
+				);
+			}
+			setLatestArticles(response.data);
+		} catch (error) {
+			console.error('Error searching articles:', error);
+		}
+	};
+
+	const getArticles = async () => {
+		const response = await axios.get('http://localhost:5000/articles');
+		setArticles(response.data);
+	};
 	return (
 		<>
 			<div id="page">
@@ -13,15 +49,12 @@ const Articles = () => {
 							<div className="breadcrumbs">
 								<ul>
 									<li>
-										<a href="#">Home</a>
+										<a href="/">Home</a>
 									</li>
-									<li>
-										<a href="#">Artikel</a>
-									</li>
-									<li>Tips &amp; Trik</li>
+									<li>Artikel</li>
 								</ul>
 							</div>
-							<h1>Tips &amp; Trik</h1>
+							<h1>Artikel</h1>
 						</div>
 						{/* <!-- /page_header --> */}
 						<div className="row">
@@ -30,10 +63,9 @@ const Articles = () => {
 									<div className="form-group">
 										<input
 											type="text"
-											name="search"
-											id="search"
+											onChange={handleSearchChange}
 											className="form-control"
-											placeholder="Search.."
+											placeholder="Cari.."
 										/>
 										<button type="submit">
 											<i className="ti-search"></i>
@@ -42,196 +74,50 @@ const Articles = () => {
 								</div>
 								{/* <!-- /widget --> */}
 								<div className="row">
-									<div className="col-md-6">
-										<article className="blog">
-											<figure>
-												<a href="blog-post.html">
-													<img
-														src="/real_assets/img/news/bank-sampah.png"
-														alt=""
-													/>
-													<div className="preview">
-														<span>Baca lebih lanjut...</span>
-													</div>
-												</a>
-											</figure>
-											<div className="post_info">
-												<small>Tips&Trik - 1 Mei 2017</small>
-												<h2>
-													<a href="blog-post.html">
-														Tips dan Trik Efektif Mengelola
-														Sampah Rumah Tangga
+									{/*  */}
+									{articles.map((article, index) => (
+										<div key={article.slug} className="col-md-6">
+											<article className="blog">
+												<figure>
+													<a href={'/article/' + article.slug}>
+														<img
+															src={
+																'/real_assets/img/articles/' +
+																article.image
+															}
+															alt={article.title}
+														/>
+														<div className="preview">
+															<span>
+																Baca lebih lanjut...
+															</span>
+														</div>
 													</a>
-												</h2>
-												<p>
-													Dalam artikel ini, kami akan membahas
-													sepuluh tips dan trik efektif untuk
-													mengelola sampah rumah tangga...
-												</p>
-											</div>
-										</article>
-										{/* <!-- /article --> */}
-									</div>
-									{/* <!-- /col --> */}
-									<div className="col-md-6">
-										<article className="blog">
-											<figure>
-												<a href="blog-post.html">
-													<img
-														src="/real_assets/img/news/bank-sampah.png"
-														alt=""
-													/>
-													<div className="preview">
-														<span>Baca lebih lanjut...</span>
-													</div>
-												</a>
-											</figure>
-											<div className="post_info">
-												<small>Tips&Trik - 1 Mei 2017</small>
-												<h2>
-													<a href="blog-post.html">
-														Tips dan Trik Efektif Mengelola
-														Sampah Rumah Tangga
-													</a>
-												</h2>
-												<p>
-													Dalam artikel ini, kami akan membahas
-													sepuluh tips dan trik efektif untuk
-													mengelola sampah rumah tangga...
-												</p>
-											</div>
-										</article>
-										{/* <!-- /article --> */}
-									</div>
-									{/* <!-- /col --> */}
-									<div className="col-md-6">
-										<article className="blog">
-											<figure>
-												<a href="blog-post.html">
-													<img
-														src="/real_assets/img/news/bank-sampah.png"
-														alt=""
-													/>
-													<div className="preview">
-														<span>Baca lebih lanjut...</span>
-													</div>
-												</a>
-											</figure>
-											<div className="post_info">
-												<small>Tips&Trik - 1 Mei 2017</small>
-												<h2>
-													<a href="blog-post.html">
-														Tips dan Trik Efektif Mengelola
-														Sampah Rumah Tangga
-													</a>
-												</h2>
-												<p>
-													Dalam artikel ini, kami akan membahas
-													sepuluh tips dan trik efektif untuk
-													mengelola sampah rumah tangga...
-												</p>
-											</div>
-										</article>
-										{/* <!-- /article --> */}
-									</div>
-									{/* <!-- /col --> */}
-									<div className="col-md-6">
-										<article className="blog">
-											<figure>
-												<a href="blog-post.html">
-													<img
-														src="/real_assets/img/news/bank-sampah.png"
-														alt=""
-													/>
-													<div className="preview">
-														<span>Baca lebih lanjut...</span>
-													</div>
-												</a>
-											</figure>
-											<div className="post_info">
-												<small>Tips&Trik - 1 Mei 2017</small>
-												<h2>
-													<a href="blog-post.html">
-														Tips dan Trik Efektif Mengelola
-														Sampah Rumah Tangga
-													</a>
-												</h2>
-												<p>
-													Dalam artikel ini, kami akan membahas
-													sepuluh tips dan trik efektif untuk
-													mengelola sampah rumah tangga...
-												</p>
-											</div>
-										</article>
-										{/* <!-- /article --> */}
-									</div>
-									{/* <!-- /col --> */}
-									<div className="col-md-6">
-										<article className="blog">
-											<figure>
-												<a href="blog-post.html">
-													<img
-														src="/real_assets/img/news/bank-sampah.png"
-														alt=""
-													/>
-													<div className="preview">
-														<span>Baca lebih lanjut...</span>
-													</div>
-												</a>
-											</figure>
-											<div className="post_info">
-												<small>Tips&Trik - 1 Mei 2017</small>
-												<h2>
-													<a href="blog-post.html">
-														Tips dan Trik Efektif Mengelola
-														Sampah Rumah Tangga
-													</a>
-												</h2>
-												<p>
-													Dalam artikel ini, kami akan membahas
-													sepuluh tips dan trik efektif untuk
-													mengelola sampah rumah tangga...
-												</p>
-											</div>
-										</article>
-										{/* <!-- /article --> */}
-									</div>
-									{/* <!-- /col --> */}
-									<div className="col-md-6">
-										<article className="blog">
-											<figure>
-												<a href="blog-post.html">
-													<img
-														src="/real_assets/img/news/bank-sampah.png"
-														alt=""
-													/>
-													<div className="preview">
-														<span>Baca lebih lanjut...</span>
-													</div>
-												</a>
-											</figure>
-											<div className="post_info">
-												<small>Tips&Trik - 1 Mei 2017</small>
-												<h2>
-													<a href="blog-post.html">
-														Tips dan Trik Efektif Mengelola
-														Sampah Rumah Tangga
-													</a>
-												</h2>
-												<p>
-													Dalam artikel ini, kami akan membahas
-													sepuluh tips dan trik efektif untuk
-													mengelola sampah rumah tangga...
-												</p>
-											</div>
-										</article>
-										{/* <!-- /article --> */}
-									</div>
-									{/* <!-- /col --> */}
+												</figure>
+												<div className="post_info">
+													<small>
+														{formatDate(article.createdAt)}
+													</small>
+													<h2>
+														<a
+															href={
+																'/article/' + article.slug
+															}>
+															{article.title}
+														</a>
+													</h2>
+													<p>
+														{truncateText(150, article.text)}
+													</p>
+												</div>
+											</article>
+											{/* <!-- /article --> */}
+										</div>
+									))}
 								</div>
 								{/* <!-- /row --> */}
 
-								<div className="pagination__wrapper no_border add_bottom_30">
+								{/* <div className="pagination__wrapper no_border add_bottom_30">
 									<ul className="pagination">
 										<li>
 											<a
@@ -264,7 +150,7 @@ const Articles = () => {
 											</a>
 										</li>
 									</ul>
-								</div>
+								</div> */}
 								{/* <!-- /pagination --> */}
 							</div>
 							{/* <!-- /col --> */}
@@ -274,8 +160,7 @@ const Articles = () => {
 									<div className="form-group">
 										<input
 											type="text"
-											name="search"
-											id="search_blog"
+											onChange={handleSearchChange}
 											className="form-control"
 											placeholder="Search.."
 										/>
@@ -290,82 +175,40 @@ const Articles = () => {
 										<h4>Artikel Terbaru</h4>
 									</div>
 									<ul className="comments-list">
-										<li>
-											<div className="alignleft">
-												<a href="#0">
-													<img
-														src="/real_assets/img/news/bank-sampah.png"
-														alt=""
-													/>
-												</a>
-											</div>
-											<small>Tips & Trik - 12 Mei 2024</small>
-											<h3>
-												<a href="#" title="">
-													Tips dan Trik Efektif Mengelola
-													Sampah...
-												</a>
-											</h3>
-										</li>
-										<li>
-											<div className="alignleft">
-												<a href="#0">
-													<img
-														src="/real_assets/img/news/bank-sampah.png"
-														alt=""
-													/>
-												</a>
-											</div>
-											<small>Tips & Trik - 12 Mei 2024</small>
-											<h3>
-												<a href="#" title="">
-													Tips dan Trik Efektif Mengelola
-													Sampah...
-												</a>
-											</h3>
-										</li>
-										<li>
-											<div className="alignleft">
-												<a href="#0">
-													<img
-														src="/real_assets/img/news/bank-sampah.png"
-														alt=""
-													/>
-												</a>
-											</div>
-											<small>Tips & Trik - 12 Mei 2024</small>
-											<h3>
-												<a href="#" title="">
-													Tips dan Trik Efektif Mengelola
-													Sampah...
-												</a>
-											</h3>
-										</li>
+										{LatestArticles.map((article, index) => (
+											<li key={article.slug}>
+												<div className="alignleft">
+													<a href={'/article/' + article.slug}>
+														<img
+															src={
+																'/real_assets/img/articles/' +
+																article.image
+															}
+															alt={truncateText(
+																50,
+																article.title
+															)}
+														/>
+													</a>
+												</div>
+												<small>
+													{formatDate(article.createdAt)}
+												</small>
+												<h3>
+													<a
+														href={'/article/' + article.slug}
+														title={truncateText(
+															50,
+															article.title
+														)}>
+														{truncateText(50, article.title)}
+													</a>
+												</h3>
+											</li>
+										))}
 									</ul>
 								</div>
 								{/* <!-- /widget --> */}
-								<div className="widget">
-									<div className="widget-title">
-										<h4>Kategori</h4>
-									</div>
-									<ul className="cats">
-										<li>
-											<a href="#">
-												Tips & Trik <span>(12)</span>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												Berita <span>(21)</span>
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												Tutorial <span>(44)</span>
-											</a>
-										</li>
-									</ul>
-								</div>
 							</aside>
 							{/* <!-- /aside --> */}
 						</div>
