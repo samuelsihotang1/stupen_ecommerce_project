@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import '../assets/css/home_1.css';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import { formatDate } from '../utils/formatDate';
 import { loadScripts } from '../utils/loadScripts';
 import { truncateText } from '../utils/truncateText';
-import { formatDate } from '../utils/formatDate';
 
 const Homepage = () => {
 	const { user } = useSelector((state) => state.auth);
@@ -369,8 +369,10 @@ const Homepage = () => {
 										href={'/article/' + article.slug}>
 										<figure>
 											<img
-												src="/real_assets/img/news/bank-sampah.png"
-												// href={'/real_assets/img/' + article.image}
+												src={
+													'/real_assets/img/articles/' +
+													article.image
+												}
 												alt={article.title}
 												width="400"
 												height="266"
@@ -378,9 +380,7 @@ const Homepage = () => {
 											/>
 										</figure>
 										<ul>
-											<li>
-                                                {formatDate(article.createdAt)}
-											</li>
+											<li>{formatDate(article.createdAt)}</li>
 										</ul>
 										<h4>{article.title}</h4>
 										<p>{truncateText(150, article.text)}</p>
