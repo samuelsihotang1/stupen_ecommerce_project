@@ -7,6 +7,7 @@ import { formatPrice } from '../utils/formatPrice.js';
 
 const Products = () => {
 	const [products, setProducts] = useState([]);
+	const [sortOption, setSortOption] = useState('latest');
 
 	useEffect(() => {
 		getProducts();
@@ -15,10 +16,30 @@ const Products = () => {
 	const getProducts = async () => {
 		try {
 			const response = await axios.get('http://localhost:5000/products');
-			setProducts(response.data);
+			let sortedProducts = [...response.data];
+
+			if (sortOption === 'latest') {
+				sortedProducts.sort(
+					(a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+				);
+			} else if (sortOption === 'oldest') {
+				sortedProducts.sort(
+					(a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+				);
+			} else if (sortOption === 'cheaper') {
+				sortedProducts.sort((a, b) => a.price - b.price);
+			} else if (sortOption === 'moreexpensive') {
+				sortedProducts.sort((a, b) => b.price - a.price);
+			}
+
+			setProducts(sortedProducts);
 		} catch (error) {
-			console.error('Error get products:', error);
+			console.error('Error fetching products:', error);
 		}
+	};
+
+	const handleSortChange = (event) => {
+		setSortOption(event.target.value);
 	};
 
 	return (
@@ -47,18 +68,22 @@ const Products = () => {
 							<ul className="clearfix">
 								<li>
 									<div className="sort_select">
-										<select name="sort" id="sort">
-											<option value="popularity" selected>
+										<select
+											name="sort"
+											id="sort"
+											value={sortOption}
+											onChange={handleSortChange}>
+											<option value="latest">
 												Urutkan berdasarkan Terbaru
 											</option>
-											<option value="rating">
-												Urutkan berdasarkan Terkait
+											<option value="oldest">
+												Urutkan berdasarkan Terlama
 											</option>
-											<option value="date">
-												Urutkan berdasarkan Terlaris
+											<option value="cheaper">
+												Urutkan berdasarkan Harga Termurah
 											</option>
-											<option value="price">
-												Urutkan berdasarkan Harga
+											<option value="moreexpensive">
+												Urutkan berdasarkan Harga Termahal
 											</option>
 										</select>
 									</div>

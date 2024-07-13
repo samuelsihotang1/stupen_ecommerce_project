@@ -5,10 +5,11 @@ import { getMe } from './features/authSlice';
 import About from './pages/About';
 import Account from './pages/Account';
 import Articles from './pages/Articles';
+import ArticleView from './pages/ArticleView';
 import Homepage from './pages/Homepage';
 import Products from './pages/Products';
+import ProductView from './pages/ProductView';
 import { loadScripts } from './utils/loadScripts';
-import ArticleView from './pages/ArticleView';
 
 function App() {
 	useEffect(() => {
@@ -30,6 +31,7 @@ function App() {
 					<Route path="/articles" element={<Articles />} />
 					<Route path="/article/:slug" element={<ArticleView />} />
 					<Route path="/products" element={<Products />} />
+					<Route path="/product/:slug" element={<ProductView />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/account" element={<Account />} />
 					{/* <Route path="edit/:id" element={<EditUser />} /> */}
