@@ -1,10 +1,17 @@
 import { Op } from 'sequelize';
+import ImageProducts from '../models/ImageProductModel.js';
 import Product from '../models/ProductModel.js';
 
 export const getProducts = async (req, res) => {
 	try {
-		const response = await Product.findAll({
+		let response;
+		response = await Product.findAll({
 			order: [['createdAt', 'DESC']],
+			include: [
+				{
+					model: ImageProducts,
+				},
+			],
 		});
 		res.status(200).json(response);
 	} catch (error) {
@@ -18,6 +25,11 @@ export const getProductsByTotal = async (req, res) => {
 		const response = await Product.findAll({
 			limit: total,
 			order: [['createdAt', 'DESC']],
+			include: [
+				{
+					model: ImageProducts,
+				},
+			],
 		});
 		res.status(200).json(response);
 	} catch (error) {
@@ -31,6 +43,11 @@ export const getProductBySlug = async (req, res) => {
 			where: {
 				slug: req.params.slug,
 			},
+			include: [
+				{
+					model: ImageProducts,
+				},
+			],
 		});
 		res.status(200).json(response);
 	} catch (error) {

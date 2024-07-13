@@ -77,22 +77,13 @@ const Products = () => {
 									<div className="grid_item">
 										<figure>
 											<a href={'/product/' + product.slug}>
-												<img
-													className="img-fluid lazy"
-													src={
-														'/real_assets/img/products/' +
-														product.image
-													}
-													alt={product.title}
-												/>
-												<img
-													className="img-fluid lazy"
-													src={
-														'/real_assets/img/products/' +
-														product.image
-													}
-													alt={product.title}
-												/>
+												{product.imageproducts.length > 0 && (
+													<img
+														className="img-fluid lazy"
+														src={`/real_assets/img/products/${product.imageproducts[0].image}`}
+														alt={product.title}
+													/>
+												)}
 											</a>
 										</figure>
 										<a href={'/product/' + product.slug}>
