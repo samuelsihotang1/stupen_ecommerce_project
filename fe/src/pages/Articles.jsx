@@ -36,8 +36,12 @@ const Articles = () => {
 	};
 
 	const getArticles = async () => {
-		const response = await axios.get('http://localhost:5000/articles');
-		setArticles(response.data);
+		try {
+			const response = await axios.get('http://localhost:5000/articles');
+			setArticles(response.data);
+		} catch (error) {
+			console.error('Error get articles:', error);
+		}
 	};
 	return (
 		<>

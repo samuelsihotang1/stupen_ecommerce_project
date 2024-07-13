@@ -23,8 +23,12 @@ const Homepage = () => {
 	}, []);
 
 	const getArticles = async () => {
-		const response = await axios.get('http://localhost:5000/articles/4');
-		setArticles(response.data);
+		try {
+			const response = await axios.get('http://localhost:5000/articles/4');
+			setArticles(response.data);
+		} catch (error) {
+			console.error('Error get articles:', error);
+		}
 	};
 
 	return (
