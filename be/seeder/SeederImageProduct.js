@@ -4,183 +4,183 @@ const SeederImageProduct = async () => {
 	try {
 		const imageProductsData = [
 			{
-				image: 'tas-belanja-ramah-lingkungan.jfif',
+				image: 'tas-belanja-ramah-lingkungan.jpg',
 				productId: 1,
 			},
 			{
-				image: 'tas-belanja-ramah-lingkungan2.jfif',
+				image: 'tas-belanja-ramah-lingkungan2.jpg',
 				productId: 1,
 			},
 			{
-				image: 'tas-belanja-ramah-lingkungan3.jfif',
+				image: 'tas-belanja-ramah-lingkungan3.jpg',
 				productId: 1,
 			},
 			{
-				image: 'tas-belanja-ramah-lingkungan4.jfif',
+				image: 'tas-belanja-ramah-lingkungan4.jpg',
 				productId: 1,
 			},
 			{
-				image: 'gantungan-kunci-kertas-daur-ulang.jfif',
+				image: 'gantungan-kunci-kertas-daur-ulang.jpg',
 				productId: 2,
 			},
 			{
-				image: 'gantungan-kunci-kertas-daur-ulang2.jfif',
+				image: 'gantungan-kunci-kertas-daur-ulang2.jpg',
 				productId: 2,
 			},
 			{
-				image: 'gantungan-kunci-kertas-daur-ulang3.jfif',
+				image: 'gantungan-kunci-kertas-daur-ulang3.jpg',
 				productId: 2,
 			},
 			{
-				image: 'gantungan-kunci-kertas-daur-ulang4.jfif',
+				image: 'gantungan-kunci-kertas-daur-ulang4.jpg',
 				productId: 2,
 			},
 			{
-				image: 'gaun-indah-dengan-kertas-daur-ulang.jfif',
+				image: 'gaun-indah-dengan-kertas-daur-ulang.jpg',
 				productId: 3,
 			},
 			{
-				image: 'gaun-indah-dengan-kertas-daur-ulang2.jfif',
+				image: 'gaun-indah-dengan-kertas-daur-ulang2.jpg',
 				productId: 3,
 			},
 			{
-				image: 'gaun-indah-dengan-kertas-daur-ulang3.jfif',
+				image: 'gaun-indah-dengan-kertas-daur-ulang3.jpg',
 				productId: 3,
 			},
 			{
-				image: 'gaun-indah-dengan-kertas-daur-ulang4.jfif',
+				image: 'gaun-indah-dengan-kertas-daur-ulang4.jpg',
 				productId: 3,
 			},
 			{
-				image: 'mainan-anak-dari-plastik-daur-ulang.jfif',
+				image: 'mainan-anak-dari-plastik-daur-ulang.jpg',
 				productId: 4,
 			},
 			{
-				image: 'mainan-anak-dari-plastik-daur-ulang2.jfif',
+				image: 'mainan-anak-dari-plastik-daur-ulang2.jpg',
 				productId: 4,
 			},
 			{
-				image: 'mainan-anak-dari-plastik-daur-ulang3.jfif',
+				image: 'mainan-anak-dari-plastik-daur-ulang3.jpg',
 				productId: 4,
 			},
 			{
-				image: 'mainan-anak-dari-plastik-daur-ulang4.jfif',
+				image: 'mainan-anak-dari-plastik-daur-ulang4.jpg',
 				productId: 4,
 			},
 			{
-				image: 'mobil-mainan-anak-dari-kardus-daur-ulang.jfif',
+				image: 'mobil-mainan-anak-dari-kardus-daur-ulang.jpg',
 				productId: 5,
 			},
 			{
-				image: 'mobil-mainan-anak-dari-kardus-daur-ulang2.jfif',
+				image: 'mobil-mainan-anak-dari-kardus-daur-ulang2.jpg',
 				productId: 5,
 			},
 			{
-				image: 'mobil-mainan-anak-dari-kardus-daur-ulang3.jfif',
+				image: 'mobil-mainan-anak-dari-kardus-daur-ulang3.jpg',
 				productId: 5,
 			},
 			{
-				image: 'mobil-mainan-anak-dari-kardus-daur-ulang4.jfif',
+				image: 'mobil-mainan-anak-dari-kardus-daur-ulang4.jpg',
 				productId: 5,
 			},
 			{
-				image: 'kerajinan-tangan-dari-kertas-daur-ulang.jfif',
+				image: 'kerajinan-tangan-dari-kertas-daur-ulang.jpg',
 				productId: 6,
 			},
 			{
-				image: 'kerajinan-tangan-dari-kertas-daur-ulang2.jfif',
+				image: 'kerajinan-tangan-dari-kertas-daur-ulang2.jpg',
 				productId: 6,
 			},
 			{
-				image: 'kerajinan-tangan-dari-kertas-daur-ulang3.jfif',
+				image: 'kerajinan-tangan-dari-kertas-daur-ulang3.jpg',
 				productId: 6,
 			},
 			{
-				image: 'kerajinan-tangan-dari-kertas-daur-ulang4.jfif',
+				image: 'kerajinan-tangan-dari-kertas-daur-ulang4.jpg',
 				productId: 6,
 			},
 			{
-				image: 'lampu-hias-dari-botol-plastik-daur-ulang.jfif',
+				image: 'lampu-hias-dari-botol-plastik-daur-ulang.jpg',
 				productId: 7,
 			},
 			{
-				image: 'lampu-hias-dari-botol-plastik-daur-ulang2.jfif',
+				image: 'lampu-hias-dari-botol-plastik-daur-ulang2.jpg',
 				productId: 7,
 			},
 			{
-				image: 'lampu-hias-dari-botol-plastik-daur-ulang3.jfif',
+				image: 'lampu-hias-dari-botol-plastik-daur-ulang3.jpg',
 				productId: 7,
 			},
 			{
-				image: 'vas-bunga-dari-kertas-daur-ulang.jfif',
+				image: 'vas-bunga-dari-kertas-daur-ulang.jpg',
 				productId: 8,
 			},
 			{
-				image: 'vas-bunga-dari-kertas-daur-ulang2.jfif',
+				image: 'vas-bunga-dari-kertas-daur-ulang2.jpg',
 				productId: 8,
 			},
 			{
-				image: 'vas-bunga-dari-kertas-daur-ulang3.jfif',
+				image: 'vas-bunga-dari-kertas-daur-ulang3.jpg',
 				productId: 8,
 			},
 			{
-				image: 'vas-bunga-dari-kertas-daur-ulang4.jfif',
+				image: 'vas-bunga-dari-kertas-daur-ulang4.jpg',
 				productId: 8,
 			},
 			{
-				image: 'gelas-unik-dari-bambu.jfif',
+				image: 'gelas-unik-dari-bambu.jpg',
 				productId: 9,
 			},
 			{
-				image: 'gelas-unik-dari-bambu2.jfif',
+				image: 'gelas-unik-dari-bambu2.jpg',
 				productId: 9,
 			},
 			{
-				image: 'teko-tradisional-dari-kelapa.jfif',
+				image: 'teko-tradisional-dari-kelapa.jpg',
 				productId: 10,
 			},
 			{
-				image: 'teko-tradisional-dari-kelapa2.jfif',
+				image: 'teko-tradisional-dari-kelapa2.jpg',
 				productId: 10,
 			},
 			{
-				image: 'teko-tradisional-dari-kelapa3.jfif',
+				image: 'teko-tradisional-dari-kelapa3.jpg',
 				productId: 10,
 			},
 			{
-				image: 'teko-tradisional-dari-kelapa4.jfif',
+				image: 'teko-tradisional-dari-kelapa4.jpg',
 				productId: 10,
 			},
 			{
-				image: 'mangkok-tempurung-kelapa-berukir.jfif',
+				image: 'mangkok-tempurung-kelapa-berukir.jpg',
 				productId: 11,
 			},
 			{
-				image: 'mangkok-tempurung-kelapa-berukir2.jfif',
+				image: 'mangkok-tempurung-kelapa-berukir2.jpg',
 				productId: 11,
 			},
 			{
-				image: 'mangkok-tempurung-kelapa-berukir3.jfif',
+				image: 'mangkok-tempurung-kelapa-berukir3.jpg',
 				productId: 11,
 			},
 			{
-				image: 'mangkok-tempurung-kelapa-berukir4.jfif',
+				image: 'mangkok-tempurung-kelapa-berukir4.jpg',
 				productId: 11,
 			},
 			{
-				image: 'tempat-atk-ukir-dari-bambu.jfif',
+				image: 'tempat-atk-ukir-dari-bambu.jpg',
 				productId: 12,
 			},
 			{
-				image: 'tempat-atk-ukir-dari-bambu2.jfif',
+				image: 'tempat-atk-ukir-dari-bambu2.jpg',
 				productId: 12,
 			},
 			{
-				image: 'tempat-atk-ukir-dari-bambu3.jfif',
+				image: 'tempat-atk-ukir-dari-bambu3.jpg',
 				productId: 12,
 			},
 			{
-				image: 'tempat-atk-ukir-dari-bambu4.jfif',
+				image: 'tempat-atk-ukir-dari-bambu4.jpg',
 				productId: 12,
 			},
 		];
