@@ -119,30 +119,6 @@ const Products = () => {
 												Rp. {formatPrice(product.price)}
 											</span>
 										</div>
-										<ul>
-											<li>
-												<a
-													href="#0"
-													className="tooltip-1"
-													data-bs-toggle="tooltip"
-													data-bs-placement="left"
-													title="Add to favorites">
-													<i className="ti-heart"></i>
-													<span>Add to favorites</span>
-												</a>
-											</li>
-											<li>
-												<a
-													href="#0"
-													className="tooltip-1"
-													data-bs-toggle="tooltip"
-													data-bs-placement="left"
-													title="Add to cart">
-													<i className="ti-shopping-cart"></i>
-													<span>Add to cart</span>
-												</a>
-											</li>
-										</ul>
 									</div>
 									{/* <!-- /grid_item --> */}
 								</div>
