@@ -24,7 +24,6 @@ const store = new sessionStore({
 	db: db,
 });
 
-// Aktifkan untuk membuat database
 (async () => {
 	await db.sync();
 
